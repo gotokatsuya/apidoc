@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title> API Doc </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        strong {
+            padding: 6px; margin: 6px;
+        }
+        pre {
+            padding: 6px; margin: 6px;
+        }
+        .prettyprint {
+            border: 1px solid #ccc;
+            margin-bottom: 0;
+            padding: 9px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">example-gin</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid" style="margin-top: 70px;margin-bottom: 20px;">
+    <div class="container-fluid">
+    <div class="col-md-4">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            
+            <li role="presentation"><a href="#0top" role="tab" data-toggle="tab">GET : /users</a></li>
+            
+            <li role="presentation"><a href="#1top" role="tab" data-toggle="tab">GET : /users/1</a></li>
+            
+            <li role="presentation"><a href="#2top" role="tab" data-toggle="tab">POST : /users</a></li>
+            
+            <li role="presentation"><a href="#3top" role="tab" data-toggle="tab">PUT : /users</a></li>
+            
+        </ul>
+    </div>
+    <div class="col-md-8 tab-content">
+        
+        <div id="0top"  role="tabpanel" class="tab-pane col-md-10">
+            
+            
+            <p> <h4> Request Headers </h4> </p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                
+                <tr>
+                    <td>Accept-Encoding</td>
+                    <td>  gzip</td>
+                </tr>
+                
+                <tr>
+                    <td>User-Agent</td>
+                    <td>  Go-http-client/1.1</td>
+                </tr>
+                
+            </table>
+            
+            
+            
+            
+            
+            <p> <h4> URL Params </h4> </p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                
+                <tr>
+                    <td>limit</td>
+                    <td> 30</td>
+                </tr>
+                
+            </table>
+            
+            
+            
+            
+            
+            <p><h4> Response Code</h4></p>
+            <strong>200</strong>
+            
+            
+            
+            <p><h4> Response Headers</h4></p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                
+                <tr>
+                    <td>Content-Type</td>
+                    <td>  application/json; charset=utf-8</td>
+                </tr>
+                
+            </table>
+            
+            
+            
+            <p> <h4> Response Body </h4> </p>
+            <pre class="prettyprint">{
+  &#34;limit&#34;: &#34;30&#34;,
+  &#34;users&#34;: [
+    {
+      &#34;id&#34;: 1,
+      &#34;name&#34;: &#34;test1&#34;
+    },
+    {
+      &#34;id&#34;: 2,
+      &#34;name&#34;: &#34;test2&#34;
+    }
+  ]
+}
+</pre>
+            
+            <hr>
+        </div>
+    
+        <div id="1top"  role="tabpanel" class="tab-pane col-md-10">
+            
+            
+            <p> <h4> Request Headers </h4> </p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                
+                <tr>
+                    <td>Accept-Encoding</td>
+                    <td>  gzip</td>
+                </tr>
+                
+                <tr>
+                    <td>User-Agent</td>
+                    <td>  Go-http-client/1.1</td>
+                </tr>
+                
+            </table>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><h4> Response Code</h4></p>
+            <strong>200</strong>
+            
+            
+            
+            <p><h4> Response Headers</h4></p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                
+                <tr>
+                    <td>Content-Type</td>
+                    <td>  application/json; charset=utf-8</td>
+                </tr>
+                
+            </table>
+            
+            
+            
+            <p> <h4> Response Body </h4> </p>
+            <pre class="prettyprint">{
+  &#34;user&#34;: {
+    &#34;id&#34;: 1,
+    &#34;name&#34;: &#34;test&#34;
+  }
+}
+</pre>
+            
+            <hr>
+        </div>
+    
+        <div id="2top"  role="tabpanel" class="tab-pane col-md-10">
+            
+            
+            <p> <h4> Request Headers </h4> </p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                
+                <tr>
+                    <td>Accept-Encoding</td>
+                    <td>  gzip</td>
+                </tr>
+                
+                <tr>
+                    <td>Content-Type</td>
+                    <td>  application/x-www-form-urlencoded</td>
+                </tr>
+                
+                <tr>
+                    <td>User-Agent</td>
+                    <td>  Go-http-client/1.1</td>
+                </tr>
+                
+            </table>
+            
+            
+            
+            <p> <h4> Post Form </h4> </p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                
+                <tr>
+                    <td>name</td>
+                    <td> gotokatsuya</td>
+                </tr>
+                
+            </table>
+            
+            
+            
+            
+            
+            
+            
+            <p><h4> Response Code</h4></p>
+            <strong>200</strong>
+            
+            
+            
+            <p><h4> Response Headers</h4></p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                
+                <tr>
+                    <td>Content-Type</td>
+                    <td>  application/json; charset=utf-8</td>
+                </tr>
+                
+            </table>
+            
+            
+            
+            <p> <h4> Response Body </h4> </p>
+            <pre class="prettyprint">{
+  &#34;user&#34;: {
+    &#34;id&#34;: 1,
+    &#34;name&#34;: &#34;gotokatsuya&#34;
+  }
+}
+</pre>
+            
+            <hr>
+        </div>
+    
+        <div id="3top"  role="tabpanel" class="tab-pane col-md-10">
+            
+            
+            <p> <h4> Request Headers </h4> </p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                
+                <tr>
+                    <td>Accept-Encoding</td>
+                    <td>  gzip</td>
+                </tr>
+                
+                <tr>
+                    <td>Content-Type</td>
+                    <td>  application/json; charset=utf-8</td>
+                </tr>
+                
+                <tr>
+                    <td>User-Agent</td>
+                    <td>  Go-http-client/1.1</td>
+                </tr>
+                
+            </table>
+            
+            
+            
+            
+            
+            
+            
+            <p> <h4> Request Body </h4> </p>
+            <pre class="prettyprint">{
+  &#34;name&#34;: &#34;gotokatsuya&#34;
+}
+</pre>
+            
+            
+            
+            <p><h4> Response Code</h4></p>
+            <strong>200</strong>
+            
+            
+            
+            <p><h4> Response Headers</h4></p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                
+                <tr>
+                    <td>Content-Type</td>
+                    <td>  application/json; charset=utf-8</td>
+                </tr>
+                
+            </table>
+            
+            
+            
+            <p> <h4> Response Body </h4> </p>
+            <pre class="prettyprint">{
+  &#34;user&#34;: {
+    &#34;id&#34;: 1,
+    &#34;name&#34;: &#34;gotokatsuya&#34;
+  }
+}
+</pre>
+            
+            <hr>
+        </div>
+    
+    </div>
+    </div>
+</div>
+<hr>
+</body>
+</html>

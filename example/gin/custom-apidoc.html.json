@@ -1,0 +1,132 @@
+[
+  {
+    "request_method": "GET",
+    "request_path": "/users",
+    "request_headers": {
+      "Accept-Encoding": " gzip\r",
+      "User-Agent": " Go-http-client/1.1\r"
+    },
+    "request_suppressed_headers": {
+      "Cache-Control": true,
+      "Content-Length": true,
+      "ETag": true,
+      "Set-Cookie": true,
+      "X-Request-Id": true
+    },
+    "request_url_params": {
+      "limit": "30"
+    },
+    "request_post_forms": {},
+    "request_body": "",
+    "response_headers": {
+      "Content-Type": " application/json; charset=utf-8\r"
+    },
+    "response_suppressed_headers": {
+      "Cache-Control": true,
+      "Content-Length": true,
+      "ETag": true,
+      "X-Request-Id": true,
+      "X-Runtime": true,
+      "X-XSS-Protection": true
+    },
+    "response_status_code": 200,
+    "response_body": "{\n  \"limit\": \"30\",\n  \"users\": [\n    {\n      \"id\": 1,\n      \"name\": \"test1\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"test2\"\n    }\n  ]\n}\n"
+  },
+  {
+    "request_method": "GET",
+    "request_path": "/users/1",
+    "request_headers": {
+      "Accept-Encoding": " gzip\r",
+      "User-Agent": " Go-http-client/1.1\r"
+    },
+    "request_suppressed_headers": {
+      "Cache-Control": true,
+      "Content-Length": true,
+      "ETag": true,
+      "Set-Cookie": true,
+      "X-Request-Id": true
+    },
+    "request_url_params": {},
+    "request_post_forms": {},
+    "request_body": "",
+    "response_headers": {
+      "Content-Type": " application/json; charset=utf-8\r"
+    },
+    "response_suppressed_headers": {
+      "Cache-Control": true,
+      "Content-Length": true,
+      "ETag": true,
+      "X-Request-Id": true,
+      "X-Runtime": true,
+      "X-XSS-Protection": true
+    },
+    "response_status_code": 200,
+    "response_body": "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"test\"\n  }\n}\n"
+  },
+  {
+    "request_method": "POST",
+    "request_path": "/users",
+    "request_headers": {
+      "Accept-Encoding": " gzip\r",
+      "Content-Type": " application/x-www-form-urlencoded\r",
+      "User-Agent": " Go-http-client/1.1\r"
+    },
+    "request_suppressed_headers": {
+      "Cache-Control": true,
+      "Content-Length": true,
+      "ETag": true,
+      "Set-Cookie": true,
+      "X-Request-Id": true
+    },
+    "request_url_params": {},
+    "request_post_forms": {
+      "name": "gotokatsuya"
+    },
+    "request_body": "",
+    "response_headers": {
+      "Content-Type": " application/json; charset=utf-8\r"
+    },
+    "response_suppressed_headers": {
+      "Cache-Control": true,
+      "Content-Length": true,
+      "ETag": true,
+      "X-Request-Id": true,
+      "X-Runtime": true,
+      "X-XSS-Protection": true
+    },
+    "response_status_code": 200,
+    "response_body": "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"gotokatsuya\"\n  }\n}\n"
+  },
+  {
+    "request_method": "PUT",
+    "request_path": "/users",
+    "request_headers": {
+      "Accept-Encoding": " gzip\r",
+      "Content-Type": " application/json; charset=utf-8\r",
+      "User-Agent": " Go-http-client/1.1\r"
+    },
+    "request_suppressed_headers": {
+      "Cache-Control": true,
+      "Content-Length": true,
+      "ETag": true,
+      "Set-Cookie": true,
+      "X-Request-Id": true
+    },
+    "request_url_params": {},
+    "request_post_forms": {},
+    "request_body": "{\n  \"name\": \"gotokatsuya\"\n}\n",
+    "response_headers": {
+      "Content-Type": " application/json; charset=utf-8\r"
+    },
+    "response_suppressed_headers": {
+      "Cache-Control": true,
+      "Content-Length": true,
+      "ETag": true,
+      "X-Request-Id": true,
+      "X-Runtime": true,
+      "X-XSS-Protection": true
+    },
+    "response_status_code": 200,
+    "response_body": "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"gotokatsuya\"\n  }\n}\n"
+  }
+]
