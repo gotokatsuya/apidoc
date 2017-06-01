@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -12,11 +11,6 @@ import (
 
 func apidocMiddleware(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if apidoc.IsDisabled() {
-			handler.ServeHTTP(w, r)
-			return
-		}
-
 		api := apidoc.NewAPI()
 		api.SuppressedRequestHeaders("Cache-Control", "Content-Length", "X-Request-Id", "ETag", "Set-Cookie")
 		api.ReadRequest(r, false)
@@ -30,7 +24,7 @@ func apidocMiddleware(handler http.Handler) http.Handler {
 		api.WrapResponseBody(recorder.Body.Bytes())
 		api.ResponseStatusCode = recorder.Code
 
-		apidoc.Gen(api)
+		apidoc.GenerateDocument(api)
 
 		for key, values := range recorder.Header() {
 			for _, value := range values {
@@ -42,21 +36,6 @@ func apidocMiddleware(handler http.Handler) http.Handler {
 	})
 }
 
-func init() {
-	d := flag.Bool("d", false, "disable api doc")
-	flag.Parse()
-	if *d {
-		apidoc.Disable()
-	}
-	if apidoc.IsDisabled() {
-		return
-	}
-	apidoc.Init(apidoc.Project{
-		DocumentTitle: "example-basic",
-		DocumentPath:  "basic-apidoc.html",
-	})
-}
-
 func getHandler() http.Handler {
 	mux := http.DefaultServeMux
 	mux.HandleFunc("/users", func(w http.ResponseWriter, r *http.Request) {
@@ -64,6 +43,14 @@ func getHandler() http.Handler {
 		fmt.Fprintf(w, "Hello")
 	})
 	return apidocMiddleware(mux)
+}
+
+func init() {
+	app := apidoc.NewApp("basic-example", "default.tpl.html", "basic-apidoc.html")
+	if err := app.Init(); err != nil {
+		panic(err)
+	}
+	apidoc.Setup(app)
 }
 
 func main() {

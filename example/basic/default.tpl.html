@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title> API Document </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        strong {
+            padding: 6px; margin: 6px;
+        }
+        pre {
+            padding: 6px; margin: 6px;
+        }
+        .prettyprint {
+            border: 1px solid #ccc;
+            margin-bottom: 0;
+            padding: 9px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{.title}}</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid" style="margin-top: 70px;margin-bottom: 20px;">
+    <div class="container-fluid">
+    <div class="col-md-4">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            {{ range $key, $value := .apis }}
+            <li role="presentation"><a href="#{{$key}}top" role="tab" data-toggle="tab">{{$value.RequestMethod}} : {{$value.RequestPath}}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+    <div class="col-md-8 tab-content">
+        {{ range $key, $value := .apis}}
+        <div id="{{$key}}top"  role="tabpanel" class="tab-pane col-md-10">
+            
+            {{ if $value.RequestHeaders }}
+            <p> <h4> Request Headers </h4> </p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                {{ range $key, $value := $value.RequestHeaders }}
+                <tr>
+                    <td>{{ $key }}</td>
+                    <td> {{ $value }}</td>
+                </tr>
+                {{ end }}
+            </table>
+            {{ end }}
+            
+            {{ if $value.RequestPostForms }}
+            <p> <h4> Post Form </h4> </p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                {{ range $key, $value := $value.RequestPostForms }}
+                <tr>
+                    <td>{{ $key }}</td>
+                    <td> {{ $value }}</td>
+                </tr>
+                {{ end }}
+            </table>
+            {{ end }}
+            
+            {{ if $value.RequestURLParams }}
+            <p> <h4> URL Params </h4> </p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                {{ range $key, $value := $value.RequestURLParams }}
+                <tr>
+                    <td>{{ $key }}</td>
+                    <td> {{ $value }}</td>
+                </tr>
+                {{ end }}
+            </table>
+            {{ end }}
+            
+            {{ if $value.RequestBody }}
+            <p> <h4> Request Body </h4> </p>
+            <pre class="prettyprint">{{ $value.RequestBody }}</pre>
+            {{ end }}
+            
+            {{ if $value.ResponseStatusCode }}
+            <p><h4> Response Code</h4></p>
+            <strong>{{ $value.ResponseStatusCode }}</strong>
+            {{ end }}
+            
+            {{ if $value.ResponseHeaders }}
+            <p><h4> Response Headers</h4></p>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                {{ range $key, $value := $value.ResponseHeaders }}
+                <tr>
+                    <td>{{ $key }}</td>
+                    <td> {{ $value }}</td>
+                </tr>
+                {{ end }}
+            </table>
+            {{ end }}
+            
+            {{ if $value.ResponseBody }}
+            <p> <h4> Response Body </h4> </p>
+            <pre class="prettyprint">{{ $value.ResponseBody }}</pre>
+            {{ end }}
+            <hr>
+        </div>
+    {{ end }}
+    </div>
+    </div>
+</div>
+<hr>
+</body>
+</html>

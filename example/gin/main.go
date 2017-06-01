@@ -2,7 +2,6 @@ package main
 
 import (
 	"bytes"
-	"flag"
 	"log"
 	"strconv"
 
@@ -35,10 +34,6 @@ func newGinBodyWriter(w gin.ResponseWriter) *ginBodyWriter {
 }
 
 func apidocMiddleware(c *gin.Context) {
-	if apidoc.IsDisabled() {
-		return
-	}
-
 	api := apidoc.NewAPI()
 	api.SuppressedRequestHeaders("Cache-Control", "Content-Length", "X-Request-Id", "ETag", "Set-Cookie")
 	api.ReadRequest(c.Request, false)
@@ -47,9 +42,7 @@ func apidocMiddleware(c *gin.Context) {
 	c.Writer = gbw
 
 	// before processing request
-
 	c.Next()
-
 	// after processing request
 
 	api.SuppressedResponseHeaders("Cache-Control", "Content-Length", "X-Request-Id", "X-Runtime", "X-XSS-Protection", "ETag")
@@ -57,7 +50,8 @@ func apidocMiddleware(c *gin.Context) {
 	api.WrapResponseBody(gbw.Body())
 	api.ResponseStatusCode = c.Writer.Status()
 
-	apidoc.Gen(api)
+	// Handling error if you want
+	_ = apidoc.GenerateDocument(api)
 }
 
 func getEngine() *gin.Engine {
@@ -104,19 +98,11 @@ func getEngine() *gin.Engine {
 }
 
 func init() {
-	d := flag.Bool("d", false, "disable api doc")
-	flag.Parse()
-	if *d {
-		apidoc.Disable()
+	app := apidoc.NewApp("gin-example", "custom.tpl.html", "custom-apidoc.html")
+	if err := app.Init(); err != nil {
+		panic(err)
 	}
-	if apidoc.IsDisabled() {
-		return
-	}
-	apidoc.Init(apidoc.Project{
-		DocumentTitle: "example-gin",
-		DocumentPath:  "custom-apidoc.html",
-		TemplatePath:  "custom.tpl.html",
-	})
+	apidoc.Setup(app)
 }
 
 func main() {
