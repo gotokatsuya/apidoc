@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 )
 
-// PrettyPrint print rich json
-func PrettyPrint(in []byte) ([]byte, error) {
+// JSONPrettyPrint print rich json
+func JSONPrettyPrint(in []byte) ([]byte, error) {
 	var out bytes.Buffer
 	if err := json.Indent(&out, in, "", "  "); err != nil {
 		return nil, err

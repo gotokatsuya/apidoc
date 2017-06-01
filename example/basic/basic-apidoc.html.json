@@ -1,0 +1,31 @@
+[
+  {
+    "request_method": "GET",
+    "request_path": "/users",
+    "request_headers": {
+      "Accept-Encoding": " gzip\r",
+      "User-Agent": " Go-http-client/1.1\r"
+    },
+    "request_suppressed_headers": {
+      "Cache-Control": true,
+      "Content-Length": true,
+      "ETag": true,
+      "Set-Cookie": true,
+      "X-Request-Id": true
+    },
+    "request_url_params": {},
+    "request_post_forms": {},
+    "request_body": "",
+    "response_headers": {},
+    "response_suppressed_headers": {
+      "Cache-Control": true,
+      "Content-Length": true,
+      "ETag": true,
+      "X-Request-Id": true,
+      "X-Runtime": true,
+      "X-XSS-Protection": true
+    },
+    "response_status_code": 200,
+    "response_body": "Hello"
+  }
+]

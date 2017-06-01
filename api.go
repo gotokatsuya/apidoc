@@ -40,8 +40,11 @@ func NewAPI() API {
 	}
 }
 
-func (a API) equal(a2 API) bool {
-	return a.RequestMethod == a2.RequestMethod && a.RequestPath == a2.RequestPath && a.ResponseStatusCode == a2.ResponseStatusCode
+// Equal is
+func (a *API) Equal(a2 API) bool {
+	return a.RequestMethod == a2.RequestMethod &&
+		a.RequestPath == a2.RequestPath &&
+		a.ResponseStatusCode == a2.ResponseStatusCode
 }
 
 // SuppressedRequestHeaders ignore request headers
@@ -156,7 +159,7 @@ func (a *API) ReadRequestBody(req *http.Request) error {
 			a.RequestPostForms[key] = values[1]
 		}
 	case strings.Contains(ct, "application/json"):
-		out, err := PrettyPrint(b.Bytes())
+		out, err := JSONPrettyPrint(b.Bytes())
 		if err != nil {
 			return err
 		}
@@ -232,7 +235,7 @@ func (a *API) ReadResponseHeader(httpHeader http.Header) error {
 func (a *API) WrapResponseBody(body []byte) error {
 	contentType, ok := a.ResponseHeaders["Content-Type"]
 	if ok && strings.Contains(strings.TrimSpace(contentType), "application/json") {
-		prettyBody, err := PrettyPrint(body)
+		prettyBody, err := JSONPrettyPrint(body)
 		if err != nil {
 			return err
 		}

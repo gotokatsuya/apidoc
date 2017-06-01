@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestPrettyPrint(t *testing.T) {
+func TestJSONPrettyPrint(t *testing.T) {
 	type data struct {
 		Name string `json:"name"`
 	}
@@ -17,7 +17,7 @@ func TestPrettyPrint(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	out, err := PrettyPrint(in)
+	out, err := JSONPrettyPrint(in)
 	if err != nil {
 		t.Fatal(err)
 	}
